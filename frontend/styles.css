@@ -74,3 +74,24 @@ textarea{min-height:110px}
   .cards{grid-template-columns:repeat(2,1fr)}
   .grid{grid-template-columns:1fr}
 }
+
+/* Mobile Responsiveness Fix */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .auth-card, .container, .auth-wrap {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 auto !important;
+        padding: 15px !important;
+        box-sizing: border-box;
+    }
+    input, select, button, textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+}
+

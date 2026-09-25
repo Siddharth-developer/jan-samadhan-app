@@ -495,7 +495,23 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
+    def seed_db():
+    # Only create if the database is empty
+    if q("SELECT COUNT(*) AS n FROM users", one=True)["n"] == 0:
+        demo_users = [
+            ("Demo Citizen", "citizen@demo.com", "citizen", ""),
+            ("Demo Expert", "expert@demo.com", "expert", "civil, water"),
+            ("Demo College", "college@demo.com", "college", "software, ai"),
+            ("Demo Industry", "industry@demo.com", "industry", ""),
+            ("Demo Gov", "gov@demo.com", "government", "")
+        ]
+        for name, email, role, exp in demo_users:
+            salt = secrets.token_hex(8)
+            q("INSERT INTO users(name,email,pw,salt,role,expertise) VALUES(?,?,?,?,?,?)",
+              (name, email, hash_pw("123456", salt), salt, role, exp))
+            
     init_db()
+    seed_db()
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     print(f"Jan Samadhan running at http://localhost:{PORT}  (Ctrl+C to stop)")
     try:

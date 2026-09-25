@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jan Samadhan — SIH 26043</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===================== AUTH SCREEN ===================== -->
+<div id="authScreen" class="auth-wrap">
+  <div class="auth-card">
+    <div class="logo">Jan Samadhan</div>
+    <div class="tag">SIH 2026 • PS 26043</div>
+
+    <div class="auth-tabs">
+      <button id="tabLogin" class="auth-tab active" onclick="setAuthMode('login')">Log in</button>
+      <button id="tabRegister" class="auth-tab" onclick="setAuthMode('register')">Register</button>
+    </div>
+
+    <form id="loginForm" onsubmit="return handleLogin(event)">
+      <label>Email</label><input id="loginEmail" type="email" required placeholder="you@example.com">
+      <label>Password</label><input id="loginPassword" type="password" required placeholder="••••••••">
+      <button class="btn" style="width:100%">Log in</button>
+      <p class="muted" style="margin-top:10px">Demo accounts: see README.md — or register a new one below.</p>
+    </form>
+
+    <form id="registerForm" class="hidden" onsubmit="return handleRegister(event)">
+      <label>Full name</label><input id="regName" required placeholder="Your name">
+      <label>Email</label><input id="regEmail" type="email" required placeholder="you@example.com">
+      <label>Password (min 6 characters)</label><input id="regPassword" type="password" required minlength="6" placeholder="••••••••">
+      <label>Role</label>
+      <select id="regRole" onchange="onRoleChange()">
+        <option value="citizen">Citizen</option>
+        <option value="expert">Expert (verification)</option>
+        <option value="college">College / University</option>
+        <option value="industry">Industry / Startup</option>
+        <option value="government">Government</option>
+      </select>
+      <label>Organisation (college / company / department name)</label><input id="regOrg" placeholder="e.g. XYZ College of Engineering">
+      <div id="expertiseField" class="hidden">
+        <label>Expertise keywords (comma-separated — used for AI matching)</label>
+        <input id="regExpertise" placeholder="e.g. water, civil, iot, environmental">
+      </div>
+      <button class="btn" style="width:100%">Create account</button>
+    </form>
+
+    <div id="authError" class="auth-error hidden"></div>
+  </div>
+</div>
+
+<!-- ===================== MAIN APP ===================== -->
+<div class="app hidden" id="appRoot">
+<aside class="side">
+  <div class="logo">Jan Samadhan</div>
+  <div class="tag">SIH 2026 • PS 26043</div>
+  <div class="nav" id="navList"></div>
+  <div class="side-foot">
+    <div id="whoAmI" class="muted"></div>
+    <button class="btn secondary" style="width:100%;margin-top:10px" onclick="logout()">Log out</button>
+  </div>
+</aside>
+<main class="main">
+  <div class="top"><h1 id="title">Dashboard</h1><span class="badge">Live • Connected to API</span></div>
+  <section id="pageBody"></section>
+</main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f7fb;color:#172033}
+.hidden{display:none !important}
+
+/* ---- layout ---- */
+.app{display:flex;min-height:100vh}
+.side{width:245px;background:#10233f;color:white;padding:22px;position:fixed;inset:0 auto 0 0;display:flex;flex-direction:column}
+.side-foot{margin-top:auto;padding-top:16px;border-top:1px solid #24406b}
+.logo{font-size:24px;font-weight:800;margin-bottom:5px}
+.tag{font-size:12px;color:#a9bdd7;margin-bottom:28px}
+.nav button{display:block;width:100%;text-align:left;background:transparent;border:0;color:#dbe7f5;padding:13px 12px;border-radius:10px;margin:5px 0;cursor:pointer;font-size:14px}
+.nav button:hover,.nav button.active{background:#1d3b62;color:#fff}
+.main{margin-left:245px;padding:28px;width:calc(100% - 245px)}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.top h1{margin:0;font-size:28px}
+.badge{background:#e8f4ff;color:#1672b8;padding:8px 12px;border-radius:20px;font-size:12px;font-weight:700}
+
+/* ---- cards / panels ---- */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+.card{background:white;border:1px solid #e4eaf2;border-radius:15px;padding:20px;box-shadow:0 4px 14px #14213d0b}
+.num{font-size:28px;font-weight:800}
+.muted{color:#718096;font-size:13px}
+.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.panel{background:#fff;border:1px solid #e4eaf2;border-radius:15px;padding:22px;margin-bottom:20px}
+.panel h2{font-size:18px;margin-top:0}
+.problem{padding:14px;border:1px solid #e4eaf2;border-radius:12px;margin:10px 0;cursor:pointer}
+.problem:hover{border-color:#4c8fd8}
+.problem.selected{border-color:#1769aa;background:#f4f9ff}
+
+/* ---- status badges ---- */
+.status{display:inline-block;padding:5px 9px;border-radius:15px;font-size:11px;font-weight:700}
+.green{background:#e6f7ed;color:#16834a}
+.orange{background:#fff1dc;color:#a85c00}
+.blue{background:#e7f1ff;color:#2469b2}
+.red{background:#fde8e8;color:#b3261e}
+.gray{background:#eef1f5;color:#5b6678}
+
+/* ---- forms ---- */
+form label{display:block;font-size:13px;font-weight:700;margin:13px 0 6px}
+input,textarea,select{width:100%;padding:12px;border:1px solid #d5deea;border-radius:9px;font:inherit;background:#fff}
+textarea{min-height:110px}
+.btn{border:0;border-radius:9px;background:#1769aa;color:white;padding:12px 17px;font-weight:700;cursor:pointer;margin-top:15px}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn.secondary{background:#eaf1f8;color:#1c4e78}
+.btn.danger{background:#fde8e8;color:#b3261e}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---- flow / matches ---- */
+.flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.step{padding:12px 14px;background:#edf5fb;border-radius:10px;font-size:13px;font-weight:700}
+.arrow{color:#789}
+.match{display:flex;justify-content:space-between;align-items:center;border:1px solid #e2e8f0;padding:15px;border-radius:10px;margin:9px 0;gap:10px;flex-wrap:wrap}
+
+/* ---- timeline ---- */
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{padding:10px 0;border-bottom:1px solid #eef1f5;font-size:13px}
+.timeline li:last-child{border-bottom:0}
+
+/* ---- toast ---- */
+.toast{position:fixed;right:25px;bottom:25px;background:#10233f;color:white;padding:14px 18px;border-radius:10px;display:none;max-width:320px;z-index:50}
+.toast.err{background:#b3261e}
+
+/* ---- auth screen ---- */
+.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#10233f,#1d3b62)}
+.auth-card{background:#fff;border-radius:18px;padding:34px;width:380px;max-width:92vw;box-shadow:0 20px 60px #0003}
+.auth-tabs{display:flex;gap:6px;background:#f0f3f7;border-radius:10px;padding:4px;margin:18px 0 6px}
+.auth-tab{flex:1;border:0;background:transparent;padding:10px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;color:#5b6678}
+.auth-tab.active{background:#10233f;color:#fff}
+.auth-error{margin-top:14px;background:#fde8e8;color:#b3261e;padding:10px 12px;border-radius:9px;font-size:13px}
+
+@media(max-width:850px){
+  .side{width:190px}
+  .main{margin-left:190px;width:calc(100% - 190px)}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:1fr}
+}

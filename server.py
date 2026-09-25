@@ -494,9 +494,7 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(data)
 
 
-def main():
-    def seed_db():
-    # Only create if the database is empty
+def seed_db():
     if q("SELECT COUNT(*) AS n FROM users", one=True)["n"] == 0:
         demo_users = [
             ("Demo Citizen", "citizen@demo.com", "citizen", ""),
@@ -507,9 +505,11 @@ def main():
         ]
         for name, email, role, exp in demo_users:
             salt = secrets.token_hex(8)
-            q("INSERT INTO users(name,email,pw,salt,role,expertise) VALUES(?,?,?,?,?,?)",
-              (name, email, hash_pw("123456", salt), salt, role, exp))
-            
+            q("INSERT INTO users(name,email,pw,salt,role,org,expertise) VALUES(?,?,?,?,?,?,?)",
+              (name, email, hash_pw("123456", salt), salt, role, "", exp))
+
+
+def main():
     init_db()
     seed_db()
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
@@ -522,3 +522,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
